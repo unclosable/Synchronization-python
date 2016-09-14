@@ -28,7 +28,14 @@ def __NoneDefaultInt(value):
         return value
 
 
+def __MillisecondTimeStampToYMD_HMS(value):
+    dateArray = datetime.datetime.utcfromtimestamp(value/1000)
+    str = dateArray.strftime("%Y-%m-%d %H:%M:%S")
+    return str
+
+
 Handler = {
     'OracleDateToMySQLDate': __OracleDateToMySQLDate,
-    'NoneDefaultInt': __NoneDefaultInt
+    'NoneDefaultInt': __NoneDefaultInt,
+    'MillisecondTimeStampToYMD_HMS': __MillisecondTimeStampToYMD_HMS
 }

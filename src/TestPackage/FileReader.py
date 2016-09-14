@@ -31,5 +31,4 @@ class FileReaderClass(object):
                 for handFuncKey in handler:
                     if handFuncKey in data.keys():
                         data[handFuncKey] = handler[handFuncKey](data[handFuncKey])
-                # print(data)
         return self.datas
