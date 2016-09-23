@@ -1,3 +1,4 @@
-from actions import departmentHTTPAction, merchantHTTPAction
+from actions import departmentHTTPAction_test, merchantHTTPAction_test, departmentHTTPAction_production, \
+    merchantHTTPAction_production
 
-action = [departmentHTTPAction.action, merchantHTTPAction.action]
+action = [departmentHTTPAction_test.action, merchantHTTPAction_test.action,departmentHTTPAction_production.action,merchantHTTPAction_production.action]

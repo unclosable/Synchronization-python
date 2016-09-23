@@ -110,9 +110,7 @@ class UpdateOrInsert(object):
             cur = self.__db.cursor(queryStr)
             if cur['response'] == 0:
                 sql = self.__insert.getSQLByOne(data)
-                print(sql)
                 self.__db.cursor(sql)
             else:
                 sql = self.__update.getUpdateSQLByOne(data)
-                print(sql)
                 self.__db.cursor(sql)

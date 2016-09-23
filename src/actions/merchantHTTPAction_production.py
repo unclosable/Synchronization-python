@@ -5,9 +5,9 @@ import datetime
 
 
 def action():
-    conn = HttpConnect("pms-service.wltest.com")
+    conn = HttpConnect("pms-service.rfddc.com")
 
-    departmentQueryStr = "/expresscompany/"
+    departmentQueryStr = "/merchant/"
 
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")[:10]
     SixDaysAgo = (datetime.datetime.now() - datetime.timedelta(days=6))
@@ -27,33 +27,29 @@ def action():
     if response is not None and response['code'] == '200' and len(response['data']) > 0:
         datas = response['data']
 
-        datas = eachData(datas, handler={
-            'creattime': Handler['MillisecondTimeStampToYMD_HMS'],
-            'updatetime': Handler['MillisecondTimeStampToYMD_HMS']
-        })
+        print(now + "处理正式商家数据" + str(datas))
 
         # 本地测试
         # db = MySQL(host="127.0.0.1", user="root", passwd="root", db="eyes")
 
         # 正式数据库
-        # db = MySQL(host="10.230.3.92", port=8088, user="eyes_prog", passwd="3FDEF8AED7DD6E43E3", db="eyes")
+        db = MySQL(host="10.230.3.92", port=8088, user="eyes_prog", passwd="3FDEF8AED7DD6E43E3", db="eyes")
 
         # 测试数据库
-        db = MySQL(host="10.3.47.82", port=3308, user="eyes", passwd="eyes", db="eyes")
+        # db = MySQL(host="10.3.47.82", port=3308, user="eyes", passwd="eyes", db="eyes")
 
-        insert = Insert("INSERT INTO departments(id,name,dtype,created_at,updated_at,city_id,is_deleted)",
-                        ['id', 'text', 'dtype', 'creattime', 'updatetime', 'cityid', 'isdeleted'])
+        insert = Insert("INSERT INTO merchant(id,name,code,province_id,city_id,is_deleted)",
+                        ['id', 'text', 'code', 'provinceid', 'cityid', 'isdeleted'])
 
-        update = Update(tableName="departments",
+        update = Update(tableName="merchant",
                         set={"text": "name",
-                             "dtype": "dtype",
-                             "creattime": "created_at",
-                             "updatetime": "updated_at",
+                             "code": "code",
+                             "provinceid": "province_id",
                              "cityid": "city_id",
                              "isdeleted": "is_deleted"},
                         where=" id=${id}")
 
-        updateOrInsert = UpdateOrInsert(insert, update, query="SELECT * FROM departments WHERE id=${id}", db=db)
+        updateOrInsert = UpdateOrInsert(insert, update, query="SELECT * FROM merchant WHERE id=${id}", db=db)
 
         updateOrInsert.pushDatas(datas)
 
