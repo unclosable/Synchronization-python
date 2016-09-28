@@ -40,8 +40,9 @@ def action():
         # 测试数据库
         db = MySQL(host="10.3.47.82", port=3308, user="eyes", passwd="eyes", db="eyes")
 
-        insert = Insert("INSERT INTO departments(id,name,dtype,created_at,updated_at,city_id,is_deleted)",
-                        ['id', 'text', 'dtype', 'creattime', 'updatetime', 'cityid', 'isdeleted'])
+        insert = Insert(
+            "INSERT INTO departments(id,name,dtype,created_at,updated_at,city_id,is_deleted,distribution_code)",
+            ['id', 'text', 'dtype', 'creattime', 'updatetime', 'cityid', 'isdeleted', 'distributioncode'])
 
         update = Update(tableName="departments",
                         set={"text": "name",
@@ -49,6 +50,7 @@ def action():
                              "creattime": "created_at",
                              "updatetime": "updated_at",
                              "cityid": "city_id",
+                             "distributioncode": "distribution_code",
                              "isdeleted": "is_deleted"},
                         where=" id=${id}")
 

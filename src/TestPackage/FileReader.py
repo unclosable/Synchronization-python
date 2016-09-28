@@ -22,6 +22,7 @@ class FileReaderClass(object):
         fileString = file.read(size=-1);
         if fileString.startswith(u'\ufeff'):  # BOM
             fileString = fileString.encode('UTF-8')[3:].decode('UTF-8')
+        fileString=fileString.replace("\t","")
         JSONArray = json.loads(fileString, encoding="UTF-8")
         self.datas = JSONArray
 

@@ -40,14 +40,16 @@ def action():
         # 正式数据库
         db = MySQL(host="10.230.3.92", port=8088, user="eyes_prog", passwd="3FDEF8AED7DD6E43E3", db="eyes")
 
-        insert = Insert("INSERT INTO departments(id,name,dtype,created_at,updated_at,city_id,is_deleted)",
-                        ['id', 'text', 'dtype', 'creattime', 'updatetime', 'cityid', 'isdeleted'])
+        insert = Insert(
+            "INSERT INTO departments(id,name,dtype,created_at,updated_at,city_id,is_deleted,distribution_code)",
+            ['id', 'text', 'dtype', 'creattime', 'updatetime', 'cityid', 'isdeleted', 'distributioncode'])
 
         update = Update(tableName="departments",
                         set={"text": "name",
                              "dtype": "dtype",
                              "creattime": "created_at",
                              "updatetime": "updated_at",
+                             "distributioncode": "distribution_code",
                              "cityid": "city_id",
                              "isdeleted": "is_deleted"},
                         where=" id=${id}")

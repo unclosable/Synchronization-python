@@ -39,8 +39,8 @@ class Insert(object):
             dataStr = "("
             for index in self.__dataIndex:
                 dataStr += "\"" + str(data[index]) + "\","
-            reSql += dataStr[:-1] + "),"
-        return reSql[:-1]
+            reSql += dataStr[:-1] + "),\n"
+        return reSql[:-2]
 
     def getSQLByOne(self, data):
         reSql = self.__insertStr + " VALUES "
