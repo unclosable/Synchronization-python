@@ -53,6 +53,7 @@ def action():
 
         updateOrInsert.pushDatas(datas)
 
+        db.clossConn()
 
 if __name__ == "__main__":
     action()

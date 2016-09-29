@@ -29,3 +29,5 @@ update = Update(tableName="merchant",
 UpdateOrInsert = UpdateOrInsert(insert, update, query="SELECT * FROM merchant WHERE id=${ID}", db=db)
 
 UpdateOrInsert.pushDatas(datas)
+
+db.clossConn()

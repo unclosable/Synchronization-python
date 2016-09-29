@@ -37,3 +37,5 @@ update = Update(tableName="departments",
 UpdateOrInsert = UpdateOrInsert(insert, update, query="SELECT * FROM departments WHERE id=${ID}", db=db)
 
 UpdateOrInsert.pushDatas(datas)
+
+db.clossConn()

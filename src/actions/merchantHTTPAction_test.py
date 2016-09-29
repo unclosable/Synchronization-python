@@ -15,7 +15,6 @@ def action():
 
     departmentQueryStr += SixDaysAgo + "/" + now
     response = conn.getresponse(departmentQueryStr)
-
     def eachData(datas, handler):
         if handler != None:
             for data in datas:
@@ -51,6 +50,7 @@ def action():
 
         updateOrInsert.pushDatas(datas)
 
+        db.clossConn()
 
 if __name__ == "__main__":
     action()

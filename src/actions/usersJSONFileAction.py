@@ -59,3 +59,5 @@ while dataLen > 0:
 # UpdateOrInsert = UpdateOrInsert(insert, update, query="SELECT * FROM users WHERE id=${EMPLOYEEID}", db=db)
 #
 # UpdateOrInsert.pushDatas(datas)
+
+db.clossConn()
