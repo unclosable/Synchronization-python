@@ -14,7 +14,10 @@ print(now + "[run]")
 print("---")
 print("---")
 for actor in action:
-    actor()
+    try:
+        actor()
+    except Exception as e:
+        print(e)
 print("---")
 print("---")
 print(now + "[finish]")
