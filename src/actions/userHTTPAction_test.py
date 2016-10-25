@@ -30,10 +30,10 @@ def action():
         print(now + "处理测试用户数据" + str(datas))
 
         # 本地测试
-        db = MySQL(host="127.0.0.1", user="root", passwd="root", db="eyes")
+        # db = MySQL(host="127.0.0.1", user="root", passwd="root", db="eyes")
 
         # 测试数据库
-        # db = MySQL(host="10.3.47.82", port=3308, user="eyes", passwd="eyes", db="eyes")
+        db = MySQL(host="10.3.47.82", port=3308, user="eyes", passwd="eyes", db="eyes")
 
         insert = Insert("INSERT INTO users(id,name,department_id,created_at,updated_at,is_deleted)",
                         ['id', 'employeename', 'stationid', 'createtime', 'updatetime', 'isdeleted'])
