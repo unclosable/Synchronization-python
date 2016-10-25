@@ -128,8 +128,9 @@ class Update(object):
         reSQL = "UPDATE " + self.__tableName + " SET "
         dataIndex = []
         for setKey in self.__set:
-            dataIndex.append(str(data[setKey]))
-            reSQL += self.__set[setKey] + "= %s ,"
+            if setKey in data:
+                dataIndex.append(str(data[setKey]))
+                reSQL += self.__set[setKey] + "= %s ,"
         whereSafesql = self.__getWhere(data)
         reSQL = reSQL[:-1] + " WHERE " + whereSafesql.sql
         return safeSQL(reSQL, tuple(dataIndex) + whereSafesql.tupleData)
