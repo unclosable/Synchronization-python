@@ -1,5 +1,4 @@
-
-from HttpConnect import HttpConnect
+from .HttpConnect import HttpConnect
 
 if __name__ == "__main__":
     conn = HttpConnect("pms-service.wltest.com")

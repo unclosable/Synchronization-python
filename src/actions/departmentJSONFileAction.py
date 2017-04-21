@@ -2,7 +2,7 @@ from TestPackage.FileReader import FileReaderClass
 from TestPackage.Handler import Handler
 from dbAction.MySQLConnect import MySQL, Insert, Update, UpdateOrInsert
 
-file = FileReaderClass('/Users/zhengwei/Desktop/test2.json')
+file = FileReaderClass('/Users/zhengwei/Desktop/test.json')
 
 datas = file.eachData({
     'CREATED_AT': Handler['OracleDateToMySQLDate'],
@@ -16,10 +16,10 @@ print("共有［%d］条数据" % (len(datas)))
 # db = MySQL(host="127.0.0.1", user="root", passwd="root", db="eyes")
 
 # 正式数据库
-# db = MySQL(host="10.230.3.92", port=8088, user="eyes_prog", passwd="3FDEF8AED7DD6E43E3", db="eyes")
+db = MySQL(host="10.230.3.92", port=8088, user="eyes_prog", passwd="3FDEF8AED7DD6E43E3", db="eyes")
 
 # 测试数据库
-db = MySQL(host="10.3.47.82", port=3308, user="eyes", passwd="eyes", db="eyes")
+# db = MySQL(host="10.3.47.82", port=3308, user="eyes", passwd="eyes", db="eyes")
 
 insert = Insert("INSERT INTO departments(id,name,dtype,created_at,updated_at,city_id,is_deleted,distribution_code)",
                 ['ID', 'NAME', 'DTYPE', 'CREATED_AT', 'UPDATED_AT', 'CITY_ID', 'ISDELETED','DISTRIBUTIONCODE'])

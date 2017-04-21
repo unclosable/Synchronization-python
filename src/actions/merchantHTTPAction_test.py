@@ -43,7 +43,8 @@ def action():
                              "code": "code",
                              "provinceid": "province_id",
                              "cityid": "city_id",
-                             "isdeleted": "is_deleted"},
+                             "isdeleted": "is_deleted",
+                             "isonceimport": "once_import"},
                         where=" id=${id}")
 
         updateOrInsert = UpdateOrInsert(insert, update, query="SELECT * FROM merchant WHERE id=${id}", db=db)
