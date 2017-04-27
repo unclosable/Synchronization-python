@@ -35,8 +35,8 @@ def action():
         # 测试数据库
         db = MySQL(host="10.3.47.82", port=3308, user="eyes", passwd="eyes", db="eyes")
 
-        insert = Insert("INSERT INTO merchant(id,name,code,province_id,city_id,is_deleted)",
-                        ['id', 'text', 'code', 'provinceid', 'cityid', 'isdeleted'])
+        insert = Insert("INSERT INTO merchant(id,name,code,province_id,city_id,is_deleted,once_import)",
+                        ['id', 'text', 'code', 'provinceid', 'cityid', 'isdeleted','isonceimport'])
 
         update = Update(tableName="merchant",
                         set={"text": "name",
