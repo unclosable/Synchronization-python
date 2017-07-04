@@ -133,6 +133,7 @@ class Update(object):
                 reSQL += self.__set[setKey] + "= %s ,"
         whereSafesql = self.__getWhere(data)
         reSQL = reSQL[:-1] + " WHERE " + whereSafesql.sql
+        print(reSQL)
         return safeSQL(reSQL, tuple(dataIndex) + whereSafesql.tupleData)
 
 

@@ -28,39 +28,38 @@ insert = Insert("INSERT INTO districts(id,name,created_at,updated_at)",
 
 
 # 空表导入
-dataLen = len(datas)
-start = 0
-end = 1000
-while dataLen > 0:
-    if end < dataLen:
-        sql = insert.getSQLByList(datas[start:end])
-        # print(sql)
-        try:
-            db.cursor(sql)
-        except Exception as e:
-            print(e)
-            # print(sql)
-        start = end
-        end += 1000
-    else:
-        sql = insert.getSQLByList(datas[start:dataLen])
-        # print(sql)
-        try:
-            db.cursor(sql)
-        except Exception as e:
-            print(e)
-            # print(sql)
-        dataLen = -1
+# dataLen = len(datas)
+# start = 0
+# end = 1000
+# while dataLen > 0:
+#     if end < dataLen:
+#         sql = insert.getSQLByList(datas[start:end])
+#         # print(sql)
+#         try:
+#             db.cursor(sql)
+#         except Exception as e:
+#             print(e)
+#             # print(sql)
+#         start = end
+#         end += 1000
+#     else:
+#         sql = insert.getSQLByList(datas[start:dataLen])
+#         # print(sql)
+#         try:
+#             db.cursor(sql)
+#         except Exception as e:
+#             print(e)
+#             # print(sql)
+#         dataLen = -1
 
-# update = Update(tableName="provinces",
-#                 set={"PROVINCENAME": "name",
-#                      "CREATETIME": "created_at",
-#                      "UPDATETIME": "updated_at",
-#                      "DISTRICTID": "districts_id"},
-#                 where=" id=${PROVINCEID}")
-#
-# UpdateOrInsert = UpdateOrInsert(insert, update, query="SELECT * FROM provinces WHERE id=${PROVINCEID}", db=db)
-#
-# UpdateOrInsert.pushDatas(datas)
-#
-# db.clossConn()
+update = Update(tableName="districts",
+                set={"DISTRICTNAME": "name",
+                     "CREATETIME": "created_at",
+                     "UPDATETIME": "updated_at"},
+                where=" id=${DISTRICTID}")
+
+UpdateOrInsert = UpdateOrInsert(insert, update, query="SELECT * FROM districts WHERE id=${DISTRICTID}", db=db)
+
+UpdateOrInsert.pushDatas(datas)
+
+db.clossConn()
