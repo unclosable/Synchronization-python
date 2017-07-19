@@ -29,7 +29,8 @@ def action():
 
         datas = eachData(datas, handler={
             'creattime': Handler['MillisecondTimeStampToYMD_HMS'],
-            'updatetime': Handler['MillisecondTimeStampToYMD_HMS']
+            'updatetime': Handler['MillisecondTimeStampToYMD_HMS'],
+            'parentsortingcenterid': Handler['sqlBUG']
         })
 
         print(now + "处理正式部门数据" + str(datas))
@@ -41,8 +42,9 @@ def action():
         db = MySQL(host="10.230.3.92", port=8088, user="eyes_prog", passwd="3FDEF8AED7DD6E43E3", db="eyes")
 
         insert = Insert(
-            "INSERT INTO departments(id,name,dtype,created_at,updated_at,city_id,is_deleted,distribution_code)",
-            ['id', 'text', 'dtype', 'creattime', 'updatetime', 'cityid', 'isdeleted', 'distributioncode'])
+            "INSERT INTO departments(id,name,dtype,created_at,updated_at,city_id,is_deleted,distribution_code,parent_sortings)",
+            ['id', 'text', 'dtype', 'creattime', 'updatetime', 'cityid', 'isdeleted', 'distributioncode',
+             'parentsortingcenterid'])
 
         update = Update(tableName="departments",
                         set={"text": "name",
@@ -51,7 +53,8 @@ def action():
                              "updatetime": "updated_at",
                              "distributioncode": "distribution_code",
                              "cityid": "city_id",
-                             "isdeleted": "is_deleted"},
+                             "isdeleted": "is_deleted",
+                             "parentsortingcenterid": "parent_sortings"},
                         where=" id=${id}")
 
         updateOrInsert = UpdateOrInsert(insert, update, query="SELECT * FROM departments WHERE id=${id}", db=db)
