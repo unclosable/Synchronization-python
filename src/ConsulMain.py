@@ -1,9 +1,12 @@
 import consulCheck.consul_actions as ca
 import configparser
+import os
 
+project_dir = os.path.dirname(os.path.abspath(__file__))
 if __name__ == "__main__":
+    print(project_dir)
     cf = configparser.ConfigParser()
-    cf.read("consul.conf")
+    cf.read(project_dir + "/consul.conf")
     sections = cf.sections()
     for section in sections:
         print('check--' + section)
