@@ -4,7 +4,6 @@ import os
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
 if __name__ == "__main__":
-    print(project_dir)
     cf = configparser.ConfigParser()
     cf.read(project_dir + "/consul.conf")
     sections = cf.sections()
